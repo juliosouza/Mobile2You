@@ -7,15 +7,18 @@
 
 import UIKit
 
+protocol DetalhesFilmeDisplayLogic: class {
+    func exibirDetalhesFilme(response: DetalhesFilmeEnum.Response)
+    func exibirErroDetalhesFilme()
+}
 
-class DetalhesViewController: UIViewController {
-    
+
+class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic {
     
     //MARK: Variables
     
     var interactor: InterfaceDetalhesInteractor?
-    
-    
+    var detalhes: DetalhesFilmeEnum.Response?
     
     
     
@@ -44,8 +47,11 @@ class DetalhesViewController: UIViewController {
         
         let viewController = self
         let interactor = DetalhesInteractor()
+        let presenter = DetalhesPresenter()
         
         viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
     }
     
     
@@ -56,5 +62,13 @@ class DetalhesViewController: UIViewController {
     func carregaDetalhes() {
         
         interactor?.carregaDetalhesFilme()
+    }
+    
+    func exibirDetalhesFilme(response: DetalhesFilmeEnum.Response) {
+        detalhes = response
+    }
+    
+    func exibirErroDetalhesFilme() {
+        print("Alert: Erro da requisição")
     }
 }

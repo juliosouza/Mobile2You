@@ -14,7 +14,16 @@ protocol DetalhesFilmePresentationLogic {
     
 }
 
-class DetalhesPresenter {
-
-
+class DetalhesPresenter: DetalhesFilmePresentationLogic {
+    
+    weak var viewController: DetalhesFilmeDisplayLogic?
+    
+    func presentList(response: DetalhesFilmeEnum.Response) {
+        viewController?.exibirDetalhesFilme(response: response)
+    }
+    
+    func presentDefaultError() {
+        viewController?.exibirErroDetalhesFilme()
+    }
+    
 }

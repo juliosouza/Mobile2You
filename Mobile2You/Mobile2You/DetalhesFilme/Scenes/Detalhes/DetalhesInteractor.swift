@@ -29,12 +29,12 @@ class DetalhesInteractor: InterfaceDetalhesInteractor {
             switch result {
             case .success(let response):
                 guard let resp = response else {
-                    print("chamou api")
+                    self.presenter?.presentDefaultError()
                     return }
-                
+                self.presenter?.presentList(response: resp)
             case .failure(let error):
                 print(error.localizedDescription)
-                
+                self.presenter?.presentDefaultError()
             }
         })
         
