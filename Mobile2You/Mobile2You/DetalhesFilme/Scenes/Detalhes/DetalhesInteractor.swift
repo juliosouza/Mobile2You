@@ -7,6 +7,38 @@
 
 import UIKit
 
-class DetalhesInteractor {
+protocol InterfaceDetalhesInteractor {
+    func carregaDetalhesFilme()
+}
+
+class DetalhesInteractor: InterfaceDetalhesInteractor {
+    
+    //MARK: Variables
+    
+    var worker: DetalhesWorker?
+    var presenter: DetalhesPresenter?
+    
+    
+    
+    func carregaDetalhesFilme() {
+        
+        worker = DetalhesWorker()
+        let request = DetalhesFilmeEnum.Request(service: .get)
+        
+        worker?.getDetalhesFilmes(request: request, completion: { (result) in
+            switch result {
+            case .success(let response):
+                guard let resp = response else {
+                    print("chamou api")
+                    return }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                
+            }
+        })
+        
+    }
+    
     
 }

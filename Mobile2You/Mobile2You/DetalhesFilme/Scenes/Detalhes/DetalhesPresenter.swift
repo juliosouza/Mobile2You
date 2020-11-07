@@ -7,6 +7,14 @@
 
 import UIKit
 
-class DetalhesPresenter {
+
+protocol DetalhesFilmePresentationLogic {
+    func presentList(response: DetalhesFilmeEnum.Response)
+    func presentDefaultError()
     
+}
+
+class DetalhesPresenter {
+
+
 }
