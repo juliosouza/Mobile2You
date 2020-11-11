@@ -14,6 +14,7 @@ enum DetalhesFilmeEnum {
         let backdrop_path: String
         let popularity: Double
         let vote_count: Int
+        let title: String
     }
     
     struct Request {

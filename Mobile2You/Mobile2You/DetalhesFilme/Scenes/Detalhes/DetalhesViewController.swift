@@ -13,7 +13,44 @@ protocol DetalhesFilmeDisplayLogic: class {
 }
 
 
-class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic {
+class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellImagem = tableView.dequeueReusableCell(withIdentifier: "cellImagem", for: indexPath) as! CellImagemFilme
+        
+        
+        guard let imagem = detalhes else { return cellImagem }
+        
+        
+        if indexPath.row == 0 {
+            cellImagem.imagemFilme.download(from: Constants.baseImageURL + imagem.backdrop_path)
+        }
+        
+        let cellInfos = tableView.dequeueReusableCell(withIdentifier: "cellInfos") as! CellInfosFilme
+        
+        if indexPath.row == 1 {
+            
+        }
+        
+        return cellImagem
+    }
+    
+    
+    
+    
+    //MARK: Outlets
+    
+    @IBOutlet weak var tabelaFilmes: UITableView!
+    
+    
+    
+    
     
     //MARK: Variables
     
@@ -26,6 +63,8 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabelaFilmes.dataSource = self
+        self.tabelaFilmes.delegate = self
         carregaDetalhes()
     }
     
@@ -62,10 +101,17 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic {
     func carregaDetalhes() {
         
         interactor?.carregaDetalhesFilme()
+        
     }
     
     func exibirDetalhesFilme(response: DetalhesFilmeEnum.Response) {
         detalhes = response
+        
+        guard let infos = detalhes else { return }
+        
+//        tituloFilme.text = infos.title
+//
+//        imagemFilme.download(from: Constants.baseImageURL + infos.backdrop_path)
     }
     
     func exibirErroDetalhesFilme() {
