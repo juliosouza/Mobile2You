@@ -22,23 +22,22 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellImagem = tableView.dequeueReusableCell(withIdentifier: "cellImagem", for: indexPath) as! CellImagemFilme
+        switch indexPath.row {
         
-        
-        guard let imagem = detalhes else { return cellImagem }
-        
-        
-        if indexPath.row == 0 {
-            cellImagem.imagemFilme.download(from: Constants.baseImageURL + imagem.backdrop_path)
+                case 0:
+                    let cellImagem = tableView.dequeueReusableCell(withIdentifier: "cellImagem", for: indexPath) as! CellImagemFilme
+                    cellImagem.imagemFilme.download(from: Constants.baseImageURL + (detalhes?.backdrop_path ?? ""))
+                    return cellImagem
+                    
+                case 1:
+                     let cellInfos = tableView.dequeueReusableCell(withIdentifier: "cellInfos") as! CellInfosFilme
+                     cellInfos.infosFilme.text = detalhes?.title
+                    return cellInfos
+                    
+                default:
+                return UITableViewCell()
         }
         
-        let cellInfos = tableView.dequeueReusableCell(withIdentifier: "cellInfos") as! CellInfosFilme
-        
-        if indexPath.row == 1 {
-            
-        }
-        
-        return cellImagem
     }
     
     
