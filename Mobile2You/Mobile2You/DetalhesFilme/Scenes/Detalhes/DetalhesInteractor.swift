@@ -9,6 +9,7 @@ import UIKit
 
 protocol InterfaceDetalhesInteractor {
     func carregaDetalhesFilme()
+    func carregaSugeridos()
 }
 
 class DetalhesInteractor: InterfaceDetalhesInteractor {
@@ -32,6 +33,27 @@ class DetalhesInteractor: InterfaceDetalhesInteractor {
                     self.presenter?.presentDefaultError()
                     return }
                 self.presenter?.presentList(response: resp)
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.presenter?.presentDefaultError()
+            }
+        })
+        
+    }
+    
+    
+    func carregaSugeridos() {
+        
+        worker = DetalhesWorker()
+        let request = SugeridosEnum.Request(service: .get)
+        
+        worker?.getSugeridos(request: request, completion: { (result) in
+            switch result {
+            case .success(let response):
+                guard let resp = response else {
+                    self.presenter?.presentDefaultError()
+                    return }
+                self.presenter?.presentListSugeridos(response: resp)
             case .failure(let error):
                 print(error.localizedDescription)
                 self.presenter?.presentDefaultError()

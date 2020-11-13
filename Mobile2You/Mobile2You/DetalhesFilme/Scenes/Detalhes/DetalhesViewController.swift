@@ -9,38 +9,13 @@ import UIKit
 
 protocol DetalhesFilmeDisplayLogic: class {
     func exibirDetalhesFilme(response: DetalhesFilmeEnum.Response)
+    func exibirSugeridos(response: SugeridosEnum.Response)
     func exibirErroDetalhesFilme()
 }
 
 
 class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic, UITableViewDataSource, UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch indexPath.row {
-        
-                case 0:
-                    let cellImagem = tableView.dequeueReusableCell(withIdentifier: "cellImagem", for: indexPath) as! CellImagemFilme
-                    cellImagem.imagemFilme.download(from: Constants.baseImageURL + (detalhes?.backdrop_path ?? ""))
-                    return cellImagem
-                    
-                case 1:
-                     let cellInfos = tableView.dequeueReusableCell(withIdentifier: "cellInfos") as! CellInfosFilme
-                     cellInfos.infosFilme.text = detalhes?.title
-                    return cellInfos
-                    
-                default:
-                return UITableViewCell()
-        }
-        
-    }
-    
-    
+
     
     
     //MARK: Outlets
@@ -50,11 +25,11 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic, UITab
     
     
     
-    
     //MARK: Variables
     
     var interactor: InterfaceDetalhesInteractor?
     var detalhes: DetalhesFilmeEnum.Response?
+    var sugeridos: SugeridosEnum.Response?
     
     
     
@@ -65,6 +40,7 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic, UITab
         self.tabelaFilmes.dataSource = self
         self.tabelaFilmes.delegate = self
         carregaDetalhes()
+        carregaSugeridos()
     }
     
     
@@ -95,6 +71,40 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic, UITab
     
     
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.row {
+        
+                case 0:
+                    let cellImagem = tableView.dequeueReusableCell(withIdentifier: "cellImagem", for: indexPath) as! CellImagemFilme
+                    cellImagem.imagemFilme.download(from: Constants.baseImageURL + (detalhes?.backdrop_path ?? ""))
+                    return cellImagem
+                    
+                case 1:
+                     let cellInfos = tableView.dequeueReusableCell(withIdentifier: "cellInfos") as! CellInfosFilme
+                     cellInfos.infosFilme.text = detalhes?.title
+                    return cellInfos
+                    
+                case 2:
+                    let cellSugeridos = tableView.dequeueReusableCell(withIdentifier: "cellSugeridos", for: indexPath) as! CellSugeridos
+                    cellSugeridos.imagemSugeridos.download(from: Constants.baseImageURL + (sugeridos?.results[indexPath.row].poster_path ?? ""))
+                    cellSugeridos.tituloSugeridos.text = sugeridos?.results[indexPath.row].title
+                    cellSugeridos.anoSugeridos.text = sugeridos?.results[indexPath.row].release_date
+                    return cellSugeridos
+                    
+                default:
+                return UITableViewCell()
+        }
+        
+    }
+    
+    
+    
+    
     //MARK: Functions
     
     func carregaDetalhes() {
@@ -103,15 +113,19 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic, UITab
         
     }
     
+    func carregaSugeridos() {
+        
+        interactor?.carregaSugeridos()
+    }
+    
     func exibirDetalhesFilme(response: DetalhesFilmeEnum.Response) {
         detalhes = response
-        
-        guard let infos = detalhes else { return }
-        
-//        tituloFilme.text = infos.title
-//
-//        imagemFilme.download(from: Constants.baseImageURL + infos.backdrop_path)
     }
+    
+    func exibirSugeridos(response: SugeridosEnum.Response) {
+        sugeridos = response
+    }
+    
     
     func exibirErroDetalhesFilme() {
         print("Alert: Erro da requisição")

@@ -35,4 +35,20 @@ class DetalhesWorker: APIClient {
         }, completion: completion)
     }
     
+    
+    func getSugeridos(request: SugeridosEnum.Request, completion: @escaping (Result<SugeridosEnum.Response?, APIError>) -> Void) {
+        let endpoint = request.service
+        var request = endpoint.request
+
+        guard let url = request.url else { return }
+        guard let abs = url.absoluteString.removingPercentEncoding else { return }
+
+        request.url = URL(string: abs)
+        request.httpMethod = "get"
+        fetch(with: request, decode: { json -> SugeridosEnum.Response? in
+            guard let feedResult = json as? SugeridosEnum.Response else {
+                return  nil }
+            return feedResult
+        }, completion: completion)
+    }
 }

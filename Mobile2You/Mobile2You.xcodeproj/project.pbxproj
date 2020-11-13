@@ -24,6 +24,7 @@
 		F7D066832556C29E00020555 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D066822556C29E00020555 /* ImageView.swift */; };
 		F7D0668A255B0D9400020555 /* CellImagemFilme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D06689255B0D9400020555 /* CellImagemFilme.swift */; };
 		F7D06692255BE1E100020555 /* CellInfosFilme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D06691255BE1E100020555 /* CellInfosFilme.swift */; };
+		F7D06697255DF9AC00020555 /* CellSugeridos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D06696255DF9AC00020555 /* CellSugeridos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F7D066822556C29E00020555 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		F7D06689255B0D9400020555 /* CellImagemFilme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagemFilme.swift; sourceTree = "<group>"; };
 		F7D06691255BE1E100020555 /* CellInfosFilme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellInfosFilme.swift; sourceTree = "<group>"; };
+		F7D06696255DF9AC00020555 /* CellSugeridos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSugeridos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			children = (
 				F7D06689255B0D9400020555 /* CellImagemFilme.swift */,
 				F7D06691255BE1E100020555 /* CellInfosFilme.swift */,
+				F7D06696255DF9AC00020555 /* CellSugeridos.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				F7D0665A25563BBA00020555 /* DetalhesViewController.swift in Sources */,
 				F7D06610255630CE00020555 /* AppDelegate.swift in Sources */,
 				F7D0667425563E9400020555 /* APIManager.swift in Sources */,
+				F7D06697255DF9AC00020555 /* CellSugeridos.swift in Sources */,
 				F7D06612255630CE00020555 /* SceneDelegate.swift in Sources */,
 				F7D0667A25563F0D00020555 /* Constants.swift in Sources */,
 				F7D0666E25563E2B00020555 /* DetalhesPresenter.swift in Sources */,
