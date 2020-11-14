@@ -27,6 +27,7 @@
 		F7D0668A255B0D9400020555 /* CellImagemFilme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D06689255B0D9400020555 /* CellImagemFilme.swift */; };
 		F7D06692255BE1E100020555 /* CellInfosFilme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D06691255BE1E100020555 /* CellInfosFilme.swift */; };
 		F7D06697255DF9AC00020555 /* CellSugeridos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D06696255DF9AC00020555 /* CellSugeridos.swift */; };
+		F7EAD3ED255F83ED00FC6757 /* Ints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD3EC255F83ED00FC6757 /* Ints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		F7D06689255B0D9400020555 /* CellImagemFilme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImagemFilme.swift; sourceTree = "<group>"; };
 		F7D06691255BE1E100020555 /* CellInfosFilme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellInfosFilme.swift; sourceTree = "<group>"; };
 		F7D06696255DF9AC00020555 /* CellSugeridos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSugeridos.swift; sourceTree = "<group>"; };
+		F7EAD3EC255F83ED00FC6757 /* Ints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 		F7D0667825563EF100020555 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F7C02E2C255F68FB00E0EB1F /* StringUtils.swift */,
 				F7D0667925563F0D00020555 /* Constants.swift */,
 			);
 			path = Utils;
@@ -212,7 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				F7D066822556C29E00020555 /* ImageView.swift */,
-				F7C02E2C255F68FB00E0EB1F /* StringUtils.swift */,
+				F7EAD3EC255F83ED00FC6757 /* Ints.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				F7D066832556C29E00020555 /* ImageView.swift in Sources */,
 				F7D0665A25563BBA00020555 /* DetalhesViewController.swift in Sources */,
 				F7D06610255630CE00020555 /* AppDelegate.swift in Sources */,
+				F7EAD3ED255F83ED00FC6757 /* Ints.swift in Sources */,
 				F7D0667425563E9400020555 /* APIManager.swift in Sources */,
 				F7D06697255DF9AC00020555 /* CellSugeridos.swift in Sources */,
 				F7C02E28255F5FBB00E0EB1F /* CellSugeridosInfo.swift in Sources */,

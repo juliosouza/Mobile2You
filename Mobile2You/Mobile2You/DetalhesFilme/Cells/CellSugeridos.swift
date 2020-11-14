@@ -16,7 +16,6 @@ class CellSugeridos: UITableViewCell, UITableViewDelegate, UITableViewDataSource
         super.awakeFromNib()
         tabelaSugeridosInfo.delegate = self
         tabelaSugeridosInfo.dataSource = self
-        alturaTabelaSugeridos.constant = tabelaSugeridosInfo.contentSize.height
     }
     
     var sugeridos: [SugeridosEnum.results] = []
@@ -24,6 +23,7 @@ class CellSugeridos: UITableViewCell, UITableViewDelegate, UITableViewDataSource
     func configurar(_ lista: [SugeridosEnum.results]) {
         sugeridos = lista
         tabelaSugeridosInfo.reloadData()
+        alturaTabelaSugeridos.constant = tabelaSugeridosInfo.contentSize.height
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
