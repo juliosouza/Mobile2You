@@ -12,4 +12,7 @@ class CellInfosFilme: UITableViewCell {
 
     @IBOutlet weak var infosFilme: UILabel!
     
+    func configurar(_ detalhes: DetalhesFilmeEnum.Response?) {
+        infosFilme.text = detalhes?.title
+    }
 }

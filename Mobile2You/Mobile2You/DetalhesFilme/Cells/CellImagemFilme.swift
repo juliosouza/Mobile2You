@@ -11,5 +11,8 @@ class CellImagemFilme: UITableViewCell {
 
     @IBOutlet weak var imagemFilme: UIImageView!
     
+    func configurar(_ detalhes: DetalhesFilmeEnum.Response?) {
+        imagemFilme.download(from: Constants.baseImageURL + (detalhes?.backdrop_path ?? ""))
+    }
     
 }
