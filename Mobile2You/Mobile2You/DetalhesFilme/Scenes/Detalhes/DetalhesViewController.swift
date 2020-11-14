@@ -71,7 +71,7 @@ class DetalhesViewController: UIViewController, DetalhesFilmeDisplayLogic {
     
     func exibirDetalhesFilme(response: DetalhesFilmeEnum.Response) {
         detalhes = response
-        tabelaFilmes.reloadData()
+//        tabelaFilmes.reloadData()
     }
     
     func exibirSugeridos(response: SugeridosEnum.Response) {
@@ -94,7 +94,7 @@ extension DetalhesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cellImagem = tableView.dequeueReusableCell(withIdentifier: "cellImagem", for: indexPath) as! CellImagemFilme
+            let cellImagem = tableView.dequeueReusableCell(withIdentifier: "cellImagem") as! CellImagemFilme
             cellImagem.configurar(detalhes)
             return cellImagem
         case 1:
@@ -103,7 +103,7 @@ extension DetalhesViewController: UITableViewDataSource, UITableViewDelegate {
             return cellInfos
         
         case 2:
-            let cellSugeridos = tableView.dequeueReusableCell(withIdentifier: "cellSugeridos", for: indexPath) as! CellSugeridos
+            let cellSugeridos = tableView.dequeueReusableCell(withIdentifier: "cellSugeridos") as! CellSugeridos
             cellSugeridos.configurar(sugeridos?.results ?? [])
             return cellSugeridos
             
@@ -114,7 +114,7 @@ extension DetalhesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-        case 0: return 300
+        case 0: return 200
         case 1: return 80
         case 2: return UITableView.automaticDimension
         default: return UITableView.automaticDimension
